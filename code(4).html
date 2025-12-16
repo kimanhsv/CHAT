@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Trợ Lý</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ai-blue': '#4A90E2',
+            'ai-light-gray': '#F5F5F7',
+            'ai-bg-sidebar': '#FAFAFA',
+            'ai-bg-main': '#FFFFFF',
+            'ai-text-primary': '#333333',
+            'ai-text-secondary': '#6B7280',
+            'ai-border': '#E5E7EB',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="Global Styles">
+    /* Using a common font for the interface */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-ai-bg-main h-screen text-ai-text-primary antialiased">
+<div class="flex h-full" data-purpose="Main application container" id="chat-app-container">
+<!-- BEGIN: Sidebar -->
+<aside class="w-72 bg-ai-bg-sidebar border-r border-ai-border flex flex-col" data-purpose="Sidebar for navigation and history">
+<!-- Sidebar Header -->
+<header class="p-4 flex items-center gap-3 border-b border-ai-border" data-purpose="Sidebar Header with Logo">
+<img alt="AI Trợ Lý Logo" class="h-6 w-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRJKxP1ikhUC6Fal-N01EFuoGsNoIQM1SHl7e8bD6bnnAsnXvXm4OgTSZacgtbC8aiX4vt2iU_nm6MxQKOscT7jNi4EvD_PzNoOwW0ENaJwfQOfUqaZOTj_VUvb-ehQc_JAXOKwdTyM_OaU3xhLTnLqqxXx1ABFC7MTRiWlVCk7RkgiNZpcoqFPtmoUk1Jslxc8v8gmw8aUYwRBOn_cO-s6L3deMUcXwCITTB2NpfAjpSeLxSbs_x3JOx0UYDmxP-OJUnAvJDMDaBE"/>
+<h1 class="text-xl font-semibold text-ai-text-primary">AI Trợ Lý</h1>
+</header>
+<!-- Sidebar Main Content -->
+<div class="flex-grow p-4 overflow-y-auto" data-purpose="Main content of the sidebar">
+<!-- New Chat Button -->
+<button class="w-full bg-ai-blue text-white font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors duration-200">
+<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" fill-rule="evenodd"></path></svg>
+          Cuộc trò chuyện mới
+        </button>
+<!-- History Section -->
+<section class="mt-8" data-purpose="Chat History List">
+<h2 class="text-xs font-bold uppercase text-ai-text-secondary tracking-wider mb-3">Hôm nay</h2>
+<nav>
+<ul class="space-y-2">
+<!-- History Item -->
+<li><a class="block text-sm p-2 rounded-md hover:bg-gray-200 truncate" href="#" title="Lập kế hoạch du lịch Đà Lạt">Lập kế hoạch du lịch Đà Lạt</a></li>
+<!-- History Item -->
+<li><a class="block text-sm p-2 rounded-md hover:bg-gray-200 truncate" href="#" title="Tóm tắt bài báo khoa học">Tóm tắt bài báo khoa học</a></li>
+<!-- History Item -->
+<li><a class="block text-sm p-2 rounded-md hover:bg-gray-200 truncate" href="#" title="Ý tưởng quà tặng sinh nhật">Ý tưởng quà tặng sinh nhật</a></li>
+</ul>
+</nav>
+</section>
+</div>
+<!-- Sidebar Footer -->
+<footer class="p-4 border-t border-ai-border" data-purpose="Sidebar Footer with links">
+<nav>
+<ul class="space-y-2">
+<!-- Settings Link -->
+<li>
+<a class="flex items-center gap-3 text-sm text-ai-text-secondary hover:text-ai-text-primary p-2 rounded-md hover:bg-gray-200" href="#">
+<img alt="" class="h-5 w-5 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTbOIFs2C00vXVE4cVO1FEAflwitUFLW_QDH4oHaMihv9Jpqo_AlpIksLA6e_nY6qL5oScqq0pCzq_c764Gjf8cKzZPi1wbYC7lGRLE63p8h_V5GkiOMkX67q1dbANNDOhe53x7wfPXqeBZOgHw4H_QcbcQHjzN5U7JSU5xNnzShYg8QyS4pWXr3Cp7yihC0S8zOKkD__HKGJQ-DFqY2emyPDDK8PuQz2IgTysJQ2IWQYOSmTpxz1fHONeW6AsRrQS_w-8pEcdE3LZ"/>
+                Cài đặt
+              </a>
+</li>
+<!-- Help Link -->
+<li>
+<a class="flex items-center gap-3 text-sm text-ai-text-secondary hover:text-ai-text-primary p-2 rounded-md hover:bg-gray-200" href="#">
+<img alt="" class="h-5 w-5 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZLUw8LrnIksOvxiwXQhuC2QoWRV5N8G6szKZNGL4g4dDBVQUd9hGLMEHpZcYSbirRuPmjk8BT2FNPVX8cGTPeDzkA7PDRb4wptMVcSvkKY9bB3LQmVNrLT4_M6qQAxZm5jCCbjKzFTT3YceAZW4Hhn3jvTaNHcr-RGCN-wPk5tvqmtDNFpbpdDgO2CT53Avzy7gKiBf9LYf-1m0Wp8nLXO0tNSjNq5y4eyV_tg_TQvElvteH2kQeUQwN96gVTZHTkoRlON-5yjor0"/>
+                Trợ giúp
+              </a>
+</li>
+</ul>
+</nav>
+</footer>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Chat Area -->
+<main class="flex-1 flex flex-col" data-purpose="Main chat interface area">
+<!-- Chat Header -->
+<header class="flex-shrink-0 flex items-center justify-end p-4 border-b border-ai-border" data-purpose="Chat Area Header">
+<div class="user-avatar bg-gray-200 rounded-full p-1">
+<img alt="User Avatar" class="rounded-full h-8 w-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCroB_QSF98yET7eiz0w1DTBVWLzZmTmnDwNPRYz9iLxPuqS3UJlDm9IZW12R45zb9gP26sXgJgaXgmkZER6RovCrrAfTOd9gVNzP6U8CbVhE4yYsqJa2N3yzfXWJZ7Dq3G0Krw_M4_KQ2rS8UDe8jFZDpD-VI6dVgAXlAVQ8236rr4quDHL43xuCGFnfILIirqbvnujslDcOYpF5SOhD5mOVNGufkqR4cxuwn36rAdOoQVMH0N9G72bfUc-44aoaqQmIU93d1JFEDx"/>
+</div>
+</header>
+<!-- Chat Log -->
+<div class="flex-grow p-6 overflow-y-auto" data-purpose="Container for all chat messages" id="chat-log">
+<div class="space-y-4">
+<!-- AI Message -->
+<div class="flex items-start gap-3" data-purpose="AI message bubble">
+<div class="flex flex-col">
+<div class="bg-ai-light-gray p-3 max-w-lg rounded-lg">
+<p class="text-sm">Chào bạn! Tôi là trợ lý AI của bạn. Tôi có thể giúp gì cho bạn hôm nay?</p>
+</div>
+<time class="text-xs text-ai-text-secondary mt-1 self-start">10:30 AM</time>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-start gap-3 justify-end" data-purpose="User message bubble">
+<div class="flex flex-col">
+<div class="bg-ai-blue text-white p-3 max-w-lg rounded-lg">
+<p class="text-sm">Xin chào, tôi cần bạn giúp tôi tìm hiểu về các địa điểm du lịch nổi tiếng ở Việt Nam.</p>
+</div>
+<time class="text-xs text-ai-text-secondary mt-1 self-end">10:31 AM</time>
+</div>
+</div>
+<!-- AI Message -->
+<div class="flex items-start gap-3" data-purpose="AI message bubble">
+<div class="flex flex-col">
+<div class="bg-ai-light-gray p-3 max-w-lg rounded-lg">
+<p class="text-sm">Tuyệt vời! Việt Nam có rất nhiều địa điểm đẹp. Bạn quan tâm đến loại hình du lịch nào: biển, núi, văn hóa hay ẩm thực?</p>
+</div>
+<time class="text-xs text-ai-text-secondary mt-1 self-start">10:32 AM</time>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Input Area -->
+<footer class="flex-shrink-0 p-4 border-t border-ai-border bg-white" data-purpose="Message input form">
+<div class="flex items-center gap-3">
+<!-- Attachment Button -->
+<!-- Text Input -->
+<input class="flex-1 border-gray-300 rounded-lg focus:ring-ai-blue focus:border-ai-blue text-sm py-2.5" placeholder="Nhập tin nhắn của bạn..." type="text"/>
+<!-- Send Button -->
+<button class="bg-ai-blue text-white font-semibold py-2 px-4 flex items-center gap-2 hover:bg-blue-600 transition-colors duration-200 rounded-lg">Gửi<img alt="Send" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE6y3PM_qjLCUTwCEvalW12ZptfLjuftw89zUoCLQzUbuhL89Qj5zNRW_4zlI-FTP5rZhDV4lTwJniNDjD30npX3G_WGsshPqb399Q7T83Z_Y5N00OEfzOu9vVh5FcZHBsPHvbTGtndelGosNV8m0j0I6Fg4wulHBLEY4jYrFDF18mXOrXY22C8nSp66FNI-xVs6BtmNxZtH6qlnPPHHn7GNnOgcyyVhmZMGLjc3RppqQA_kHCRGxx3-rmXCMML2is8I_Q4x0Miwot"/></button>
+</div>
+</footer>
+</main>
+<!-- END: Main Chat Area -->
+</div>
+</body></html>

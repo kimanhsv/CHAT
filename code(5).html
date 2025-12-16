@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-fonts-and-colors">
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sidebar-dark': '#1e293b', // A dark slate blue for the sidebar
+            'sidebar-active': '#3b82f6', // A brighter blue for the active nav item
+            'main-bg': '#f1f5f9', // A light gray for the main content background
+            'status-green-bg': '#dcfce7',
+            'status-green-text': '#16a34a',
+            'status-red-bg': '#fee2e2',
+            'status-red-text': '#dc2626',
+            'status-yellow-bg': '#fef9c3',
+            'status-yellow-text': '#ca8a04',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-main-bg">
+<div class="flex h-screen bg-gray-100">
+<!-- BEGIN: Sidebar -->
+<aside class="w-64 bg-sidebar-dark text-white flex flex-col" data-purpose="sidebar-navigation">
+<!-- Sidebar Header -->
+<div class="h-16 flex items-center justify-center border-b border-slate-700">
+<h1 class="text-xl font-bold">Trang Quản lý</h1>
+</div>
+<!-- Navigation Menu -->
+<nav class="flex-1 px-4 py-4">
+<ul class="space-y-2">
+<li>
+<a class="flex items-center p-3 rounded-lg hover:bg-slate-700 transition-colors" href="#">
+<svg class="h-6 w-6 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Bảng điều khiển</span>
+</a>
+</li>
+<li>
+<!-- Active navigation item -->
+<a class="flex items-center p-3 rounded-lg bg-sidebar-active transition-colors" href="#">
+<svg class="h-6 w-6 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197M15 21a6 6 0 006-6v-1a3 3 0 00-3-3H9a3 3 0 00-3 3v1a6 6 0 006 6z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Người dùng</span>
+</a>
+</li>
+<li>
+<a class="flex items-center p-3 rounded-lg hover:bg-slate-700 transition-colors" href="#">
+<svg class="h-6 w-6 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Mô hình AI</span>
+</a>
+</li>
+<li>
+<a class="flex items-center p-3 rounded-lg hover:bg-slate-700 transition-colors" href="#">
+<svg class="h-6 w-6 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Cài đặt</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Content -->
+<main class="flex-1 p-8 overflow-y-auto" data-purpose="main-content-area">
+<!-- Content Header -->
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-3xl font-bold text-slate-800">Quản lý Người dùng</h2>
+</div>
+<!-- User Management Card -->
+<div class="bg-white rounded-lg shadow-md" data-purpose="user-table-card">
+<!-- Card Header with controls -->
+<div class="p-6 flex items-center justify-between">
+<div class="relative">
+<svg class="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<input class="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Search" type="text"/>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50 flex items-center">
+<span>Lọc</span>
+<svg class="h-4 w-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<button class="px-4 py-2 border border-transparent rounded-md bg-blue-600 text-white hover:bg-blue-700 flex items-center font-semibold">
+<svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Thêm Người dùng</span>
+</button>
+</div>
+</div>
+<!-- Users Table -->
+<div class="overflow-x-auto" data-purpose="users-table-container">
+<table class="w-full text-left" id="user-table">
+<thead class="bg-gray-50 border-b border-gray-200">
+<tr>
+<th class="px-6 py-3 text-sm font-semibold text-gray-600 uppercase tracking-wider font-bold">ID</th>
+<th class="px-6 py-3 text-sm font-semibold text-gray-600 uppercase tracking-wider font-bold">Tên người dùng</th>
+<th class="px-6 py-3 text-sm font-semibold text-gray-600 uppercase tracking-wider font-bold">Email</th>
+<th class="px-6 py-3 text-sm font-semibold text-gray-600 uppercase tracking-wider font-bold">Vai trò</th>
+<th class="px-6 py-3 text-sm font-semibold text-gray-600 uppercase tracking-wider font-bold">Trạng thái</th>
+<th class="px-6 py-3 text-sm font-semibold text-gray-600 uppercase tracking-wider font-bold">Hành động</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<!-- Table Row 1 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">001</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">Nguyễn Văn A</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">nguyen.vana@example.com</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">Quản trị viên</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-status-green-bg text-status-green-text">Hoạt động</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+<button class="p-1 text-gray-400 hover:text-blue-600 rounded-md border border-gray-300 hover:border-blue-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1 text-gray-400 hover:text-red-600 rounded-md border border-gray-300 hover:border-red-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">002</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">Trần Thị B</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">tran.thib@example.com</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">Người dùng</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-status-green-bg text-status-green-text">Hoạt động</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+<button class="p-1 text-gray-400 hover:text-blue-600 rounded-md border border-gray-300 hover:border-blue-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1 text-gray-400 hover:text-red-600 rounded-md border border-gray-300 hover:border-red-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">003</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">Lê Hoàng C</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">le.hoangc@example.com</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">Biên tập viên</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-status-red-bg text-status-red-text">Bị khoá</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+<button class="p-1 text-gray-400 hover:text-blue-600 rounded-md border border-gray-300 hover:border-blue-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1 text-gray-400 hover:text-red-600 rounded-md border border-gray-300 hover:border-red-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</td>
+</tr>
+<!-- Table Row 4 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">004</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">Phạm Minh D</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">pham.minhd@example.com</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">Người dùng</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-status-green-bg text-status-green-text">Hoạt động</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+<button class="p-1 text-gray-400 hover:text-blue-600 rounded-md border border-gray-300 hover:border-blue-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1 text-gray-400 hover:text-red-600 rounded-md border border-gray-300 hover:border-red-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</td>
+</tr>
+<!-- Table Row 5 -->
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">005</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">Hoàng Thị E</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">hoang.thie@example.com</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-500">Người dùng</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-status-yellow-bg text-status-yellow-text">Chờ duyệt</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+<button class="p-1 text-gray-400 hover:text-blue-600 rounded-md border border-gray-300 hover:border-blue-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="p-1 text-gray-400 hover:text-red-600 rounded-md border border-gray-300 hover:border-red-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer with Pagination -->
+<div class="p-6 flex items-center justify-between border-t border-gray-200">
+<p class="text-sm text-gray-600">Hiển thị 1-5 trong 50 người dùng</p>
+<nav aria-label="Pagination" class="flex items-center space-x-2">
+<a class="px-3 py-1 rounded-md bg-gray-200 text-gray-800 font-semibold" href="#">1</a>
+<a class="px-3 py-1 rounded-md text-gray-600 hover:bg-gray-100" href="#">2</a>
+<a class="px-3 py-1 rounded-md text-gray-600 hover:bg-gray-100" href="#">3</a>
+<span class="text-gray-500">...</span>
+<a class="px-3 py-1 rounded-md text-gray-600 hover:bg-gray-100" href="#">10</a>
+<a class="px-2 py-1 rounded-md text-gray-600 hover:bg-gray-100" href="#">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</nav>
+</div>
+</div>
+</main>
+<!-- END: Main Content -->
+</div>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Chat Admin Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            'brand-blue': '#0052cc',
+            'brand-light-gray': '#f8f9fa',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-light-gray font-sans text-gray-800 antialiased">
+<div class="flex flex-col min-h-screen" id="page-wrapper">
+<!-- BEGIN: MainHeader -->
+<header class="bg-white border-b border-gray-200">
+<div class="container mx-auto px-6 h-16 flex justify-between items-center">
+<!-- Logo and Title -->
+<a class="flex items-center gap-3 text-lg font-semibold text-gray-800" href="#">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold text-sm">A</div>
+<span>AI Chat Admin</span>
+</a>
+<!-- Language Selector -->
+<div data-purpose="language-selector">
+<button class="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue">
+<span>Tiếng Việt</span>
+<svg aria-hidden="true" class="h-4 w-4 text-gray-500" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" fill-rule="evenodd"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div class="w-full max-w-md" data-purpose="login-card-container">
+<!-- Login Card -->
+<div class="bg-white p-8 md:p-10 rounded-lg shadow-xl">
+<h2 class="text-center text-2xl font-bold text-gray-900 mb-8">Đăng nhập Quản trị</h2>
+<!-- Login Form -->
+<form action="#" class="space-y-6" method="POST">
+<!-- Username/Email Field -->
+<div>
+<label class="block text-sm font-medium text-gray-900" for="username">Tên người dùng hoặc Email</label>
+<div class="mt-1">
+<input class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-brand-blue focus:outline-none focus:ring-brand-blue sm:text-sm" id="username" name="username" placeholder="nhập tên người dùng..." required="" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<label class="block text-sm font-medium text-gray-900" for="password">Mật khẩu</label>
+<div class="mt-1 relative">
+<input autocomplete="current-password" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-brand-blue focus:outline-none focus:ring-brand-blue sm:text-sm" id="password" name="password" placeholder="nhập mật khẩu..." required="" type="password"/>
+<!-- Password visibility toggle icon -->
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 flex items-center pr-3" type="button">
+<svg class="h-5 w-5 text-gray-400" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 15a3 3 0 100-6 3 3 0 000 6z"></path>
+<path clip-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a.75.75 0 010-1.113zM12.001 18a8.25 8.25 0 006.91-3.753.751.751 0 000-.992A8.25 8.25 0 0012.001 6a8.25 8.25 0 00-6.91 3.753.751.751 0 000 .992A8.25 8.25 0 0012.001 18z" fill-rule="evenodd"></path>
+</svg>
+<svg class="h-5 w-5 text-gray-400 hidden" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.53 2.47a.75.75 0 00-1.06 1.06l18 18a.75.75 0 101.06-1.06l-18-18zM22.676 12.553a11.249 11.249 0 01-2.631 4.31l-3.099-3.099a5.25 5.25 0 00-6.71-6.71L8.74 5.165A11.25 11.25 0 0122.676 12.553zM12.001 18a8.25 8.25 0 01-6.91-3.753.75.75 0 010-.992l1.916-2.299a.75.75 0 00-1.091-1.026L2.6 12.447a11.25 11.25 0 0018.75 0l-1.916 2.299a.75.75 0 101.091 1.026L19.4 17.553A8.25 8.25 0 0112.001 18z"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<div>
+<button class="group relative flex w-full justify-center rounded-md border border-transparent bg-brand-blue py-2.5 px-4 text-sm font-semibold text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:ring-offset-2" type="submit">
+                Đăng nhập
+              </button>
+</div>
+</form>
+<!-- Forgot Password Link -->
+<div class="text-center mt-6">
+<a class="font-medium text-brand-blue hover:text-blue-700 text-sm" href="#">Quên mật khẩu?</a>
+</div>
+<!-- Security Notice -->
+<div class="text-center">
+<p class="text-xs text-gray-500">Hệ thống bảo mật được mã hóa</p>
+</div>
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: MainFooter -->
+<footer class="py-6 text-center">
+<div class="container mx-auto px-6"><nav class="flex justify-center space-x-6">
+<a class="text-sm text-gray-600 hover:text-gray-900" href="#">Chính sách bảo mật</a>
+<a class="text-sm text-gray-600 hover:text-gray-900" href="#">Điều khoản dịch vụ</a>
+</nav></div>
+</footer>
+<!-- END: MainFooter -->
+</div>
+</body></html><!-- MISSING_IMAGES:
+- The AI Chat Admin robot logo shown in the header.
+-->

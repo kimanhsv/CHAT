@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cài đặt chung hệ thống - AI Chat Admin</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts for a similar font style -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-styles-and-layout">
+    /* Using a common sans-serif font stack with Inter as primary */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7f8fa;
+    }
+
+    /* Custom styles for the number input to hide default spinners in Webkit browsers */
+    /* Tailwind doesn't have a utility for this, so custom CSS is needed */
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type='number'] {
+      -moz-appearance: textfield;
+    }
+  </style>
+<script>
+    // Customizing Tailwind theme to match the image's color palette
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sidebar-bg': '#1a3666',
+            'sidebar-active': '#334d7c',
+            'content-bg': '#f7f8fa',
+            'primary-blue': '#4a69e2',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-content-bg text-gray-800">
+<div class="flex h-screen" data-purpose="main-layout-container">
+<!-- BEGIN: Sidebar Navigation -->
+<aside class="w-64 bg-sidebar-bg text-white flex flex-col flex-shrink-0">
+<!-- Sidebar Header -->
+<div class="h-16 flex items-center px-6">
+<svg class="h-8 w-8 mr-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V4H8"></path><rect height="16" rx="2" width="16" x="4" y="4"></rect><path d="M12 12h4"></path><path d="M12 16h4"></path><path d="M8 12h.01"></path><path d="M8 16h.01"></path></svg>
+<span class="text-xl font-bold">AI Chat Admin</span>
+</div>
+<!-- Navigation Menu -->
+<nav class="flex-grow px-4 py-4" data-purpose="main-navigation">
+<ul class="space-y-2">
+<li>
+<a class="flex items-center p-3 rounded-lg hover:bg-sidebar-active transition-colors duration-200" href="#">
+<svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="12" x2="12" y1="20" y2="10"></line><line x1="18" x2="18" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="16"></line></svg>
+<span>Tổng quan</span>
+</a>
+</li>
+<li>
+<a class="flex items-center p-3 rounded-lg hover:bg-sidebar-active transition-colors duration-200" href="#">
+<svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+<span>Người dùng</span>
+</a>
+</li>
+<li>
+<a class="flex items-center p-3 rounded-lg hover:bg-sidebar-active transition-colors duration-200" href="#">
+<svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+<span>Lịch sử Chat</span>
+</a>
+</li>
+<!-- Active Navigation Item -->
+<li>
+<a aria-current="page" class="flex items-center p-3 rounded-lg bg-sidebar-active font-semibold transition-colors duration-200" href="#">
+<svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2.2l-.15.1a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1 0-2.2l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+<span>Cài đặt chung</span>
+</a>
+</li>
+<li>
+<a class="flex items-center p-3 rounded-lg hover:bg-sidebar-active transition-colors duration-200" href="#">
+<svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 14 4-4"></path><path d="m16 14-4-4"></path><path d="M18 10V5.5c0-1-1.2-2-2.5-2S13 4.5 13 5.5V10"></path><path d="M6 10V5.5C6 4.5 4.8 3 3.5 3S1 4.5 1 5.5V10"></path><path d="M14 21v-4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v4"></path><path d="M1 10h22"></path></svg>
+<span>Mô hình AI</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Sidebar Footer/Logout -->
+<div class="px-4 pb-4">
+<a class="flex items-center p-3 rounded-lg text-gray-300 hover:bg-sidebar-active hover:text-white transition-colors duration-200" href="#">
+<svg class="h-5 w-5 mr-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg>
+<span>Đăng xuất</span>
+</a>
+</div>
+</aside>
+<!-- END: Sidebar Navigation -->
+<!-- BEGIN: Main Content -->
+<main class="flex-1 overflow-y-auto p-8">
+<div class="max-w-4xl mx-auto" data-purpose="content-wrapper">
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="text-sm text-gray-500 mb-4">
+<ol class="list-none p-0 inline-flex">
+<li class="flex items-center">
+<a class="hover:underline" href="#">Trang chủ</a>
+</li>
+<li class="flex items-center">
+<span class="mx-2">&gt;</span>
+<a class="hover:underline" href="#">Quản trị</a>
+</li>
+<li class="flex items-center">
+<span class="mx-2">&gt;</span>
+<span class="text-gray-700">Cài đặt chung</span>
+</li>
+</ol>
+</nav>
+<!-- Main Settings Form Card -->
+<div class="bg-white rounded-lg shadow-sm p-8" data-purpose="settings-form-card">
+<h1 class="text-2xl font-bold text-gray-900 mb-8">Cài đặt chung hệ thống</h1>
+<form action="#" method="POST">
+<!-- Form Section: System & Language -->
+<section class="border-b pb-8 mb-8" data-purpose="system-language-section">
+<h2 class="text-lg font-semibold text-gray-800 mb-6">Hệ thống &amp; Ngôn ngữ</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<!-- Default Language Field -->
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="system-language">Ngôn ngữ mặc định hệ thống</label>
+<select class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="system-language" name="system_language">
+<option selected="">Tiếng Việt</option>
+<option>English</option>
+</select>
+</div>
+<!-- Timezone Field -->
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="timezone">Múi giờ</label>
+<select class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="timezone" name="timezone">
+<option selected="">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+<option>(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option>(GMT+01:00) Central European Time</option>
+</select>
+</div>
+<!-- Website Display Name Field -->
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1" for="website-name">Tên hiển thị website</label>
+<input class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="website-name" name="website_name" type="text" value="AI Chat Assistant Pro"/>
+</div>
+</div>
+</section>
+<!-- Form Section: Chat Configuration -->
+<section class="border-b pb-8 mb-8" data-purpose="chat-config-section">
+<h2 class="text-lg font-semibold text-gray-800 mb-6">Cấu hình Chat</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<!-- Character Limit Field -->
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="char-limit">Giới hạn ký tự mỗi tin nhắn</label>
+<div class="relative">
+<input class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 pr-10 text-right" id="char-limit" name="char_limit" type="number" value="2000"/>
+<div class="absolute inset-y-0 right-0 flex flex-col justify-center px-2">
+<button class="h-1/2 flex items-center text-gray-500 hover:text-gray-700" onclick="this.previousElementSibling.stepUp()" type="button">
+<svg class="h-3 w-3" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="h-1/2 flex items-center text-gray-500 hover:text-gray-700" onclick="this.parentElement.previousElementSibling.stepDown()" type="button">
+<svg class="h-3 w-3" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+<p class="text-xs text-gray-500 mt-1">Số lượng ký tự tối đa người dùng có thể gửi.</p>
+</div>
+<!-- Message Limit Field -->
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="message-limit">Giới hạn tin nhắn mỗi phiên</label>
+<div class="relative">
+<input class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 pr-10 text-right" id="message-limit" name="message_limit" type="number" value="50"/>
+<div class="absolute inset-y-0 right-0 flex flex-col justify-center px-2">
+<button class="h-1/2 flex items-center text-gray-500 hover:text-gray-700" onclick="this.previousElementSibling.stepUp()" type="button">
+<svg class="h-3 w-3" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="h-1/2 flex items-center text-gray-500 hover:text-gray-700" onclick="this.parentElement.previousElementSibling.stepDown()" type="button">
+<svg class="h-3 w-3" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Default AI Model Field -->
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 mb-1" for="ai-model">Mô hình AI mặc định cho khách</label>
+<select class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="ai-model" name="ai_model">
+<option>GPT-3.5 Turbo</option>
+<option selected="">GPT-4o (Recommended)</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Form Section: Security & Notifications -->
+<section data-purpose="security-notifications-section">
+<h2 class="text-lg font-semibold text-gray-800 mb-6">Bảo mật &amp; Thông báo</h2>
+<div class="space-y-6"><!-- Toggle Switch: Allow Registration -->
+<div class="flex justify-between items-center">
+<label class="text-sm font-medium text-gray-700" for="allow-registration">Cho phép đăng ký người dùng mới</label>
+<button aria-checked="true" class="bg-green-500 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" id="allow-registration" role="switch" type="button">
+<span class="sr-only">Allow new user registration</span>
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Toggle Switch: Require Email Verification -->
+<div class="flex justify-between items-center">
+<label class="text-sm font-medium text-gray-700" for="require-verification">Yêu cầu xác thực email</label>
+<button aria-checked="true" class="bg-green-500 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" id="require-verification" role="switch" type="button">
+<span class="sr-only">Require email verification</span>
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Toggle Switch: Admin Error Notifications -->
+<div class="flex justify-between items-center">
+<label class="text-sm font-medium text-gray-700" for="admin-notifications">Thông báo lỗi hệ thống qua email admin</label>
+<button aria-checked="true" class="bg-green-500 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" id="admin-notifications" role="switch" type="button">
+<span class="sr-only">Notify system errors via admin email</span>
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Content Filtering Level Field -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center">
+<label class="text-sm font-medium text-gray-700" for="content-filter">Cấp độ lọc nội dung</label>
+<select class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" id="content-filter" name="content_filter">
+<option>Thấp</option>
+<option selected="">Trung bình (Khuyên dùng)</option>
+<option>Cao</option>
+</select>
+</div></div>
+</section>
+<!-- Form Action Buttons -->
+<div class="flex justify-end items-center mt-6" data-purpose="form-actions">
+<button class="px-5 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300" type="button">
+                Hủy
+              </button>
+<button class="ml-3 px-5 py-2.5 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700" type="submit">
+                Lưu thay đổi
+              </button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- END: Main Content -->
+</div>
+<script data-purpose="toggle-switch-handler">
+    // Simple script to handle the visual state of toggle switches
+    document.querySelectorAll('[role="switch"]').forEach(button => {
+      button.addEventListener('click', () => {
+        const isChecked = button.getAttribute('aria-checked') === 'true';
+        button.setAttribute('aria-checked', !isChecked);
+        button.classList.toggle('bg-green-500');
+        button.classList.toggle('bg-gray-200');
+        const handle = button.querySelector('span[aria-hidden="true"]');
+        handle.classList.toggle('translate-x-5');
+        handle.classList.toggle('translate-x-0');
+      });
+    });
+  </script>
+</body></html>

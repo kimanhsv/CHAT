@@ -1,0 +1,5 @@
+body { padding-top: 1rem; }
+.chat-box { max-height: 60vh; overflow-y: auto; }
+.message { padding: 0.5rem; border-radius: 8px; margin-bottom: 0.5rem; }
+.message.user { background: #e7f3ff; }
+.message.bot { background: #f1f1f1; }
